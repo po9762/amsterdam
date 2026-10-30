@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Claude" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="52.3726" lon="4.9002"><name>Nieuwmarkt</name></wpt>
+  <wpt lat="52.371" lon="4.8994"><name>Kloveniersburgwal</name></wpt>
+  <wpt lat="52.3682" lon="4.8978"><name>Staalstraat</name></wpt>
+  <wpt lat="52.3683" lon="4.899"><name>Brug over Groenburgwal</name></wpt>
+  <wpt lat="52.3667" lon="4.9008"><name>Blauwbrug</name></wpt>
+  <wpt lat="52.3655" lon="4.8985"><name>Herengracht</name></wpt>
+  <wpt lat="52.3656" lon="4.8968"><name>Thorbeckeplein</name></wpt>
+  <wpt lat="52.3663" lon="4.8963"><name>Rembrandtplein</name></wpt>
+  <trk><name>Zaterdagavond - Nieuwmarkt &gt; Rembrandtplein</name><trkseg>
+    <trkpt lat="52.3726" lon="4.9002"/>
+    <trkpt lat="52.371" lon="4.8994"/>
+    <trkpt lat="52.3693" lon="4.8982"/>
+    <trkpt lat="52.3682" lon="4.8978"/>
+    <trkpt lat="52.3683" lon="4.899"/>
+    <trkpt lat="52.3684" lon="4.9003"/>
+    <trkpt lat="52.3672" lon="4.9013"/>
+    <trkpt lat="52.3667" lon="4.9008"/>
+    <trkpt lat="52.366" lon="4.9002"/>
+    <trkpt lat="52.3655" lon="4.8985"/>
+    <trkpt lat="52.3656" lon="4.8968"/>
+    <trkpt lat="52.3663" lon="4.8963"/>
+  </trkseg></trk>
+</gpx>

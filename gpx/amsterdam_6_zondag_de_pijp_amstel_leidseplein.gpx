@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Claude" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="52.3552" lon="4.8915"><name>Gerard Douplein</name></wpt>
+  <wpt lat="52.3535" lon="4.896"><name>Sarphatipark</name></wpt>
+  <wpt lat="52.3542" lon="4.9005"><name>Ceintuurbaan</name></wpt>
+  <wpt lat="52.3556" lon="4.9065"><name>Amstel</name></wpt>
+  <wpt lat="52.3633" lon="4.902"><name>Magere Brug</name></wpt>
+  <wpt lat="52.3638" lon="4.8962"><name>Reguliersgracht</name></wpt>
+  <wpt lat="52.362" lon="4.892"><name>Prinsengracht</name></wpt>
+  <wpt lat="52.3605" lon="4.8885"><name>Spiegelgracht</name></wpt>
+  <wpt lat="52.3647" lon="4.8833"><name>Leidsegracht</name></wpt>
+  <wpt lat="52.3642" lon="4.883"><name>Leidseplein</name></wpt>
+  <trk><name>Zondag - De Pijp &gt; Amstel &gt; Leidseplein</name><trkseg>
+    <trkpt lat="52.3552" lon="4.8915"/>
+    <trkpt lat="52.3545" lon="4.8935"/>
+    <trkpt lat="52.3535" lon="4.896"/>
+    <trkpt lat="52.3537" lon="4.8985"/>
+    <trkpt lat="52.3542" lon="4.9005"/>
+    <trkpt lat="52.355" lon="4.9045"/>
+    <trkpt lat="52.3556" lon="4.9065"/>
+    <trkpt lat="52.3582" lon="4.9047"/>
+    <trkpt lat="52.361" lon="4.9032"/>
+    <trkpt lat="52.3633" lon="4.902"/>
+    <trkpt lat="52.3635" lon="4.9003"/>
+    <trkpt lat="52.3638" lon="4.8962"/>
+    <trkpt lat="52.363" lon="4.8955"/>
+    <trkpt lat="52.362" lon="4.892"/>
+    <trkpt lat="52.3613" lon="4.889"/>
+    <trkpt lat="52.3605" lon="4.8885"/>
+    <trkpt lat="52.3613" lon="4.889"/>
+    <trkpt lat="52.3626" lon="4.8858"/>
+    <trkpt lat="52.3634" lon="4.8845"/>
+    <trkpt lat="52.3647" lon="4.8833"/>
+    <trkpt lat="52.3643" lon="4.8821"/>
+    <trkpt lat="52.3642" lon="4.883"/>
+  </trkseg></trk>
+</gpx>

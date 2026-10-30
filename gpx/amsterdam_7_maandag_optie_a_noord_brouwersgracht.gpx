@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Claude" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="52.3791" lon="4.9003"><name>Centraal Station (pont naar Buiksloterweg)</name></wpt>
+  <wpt lat="52.3825" lon="4.901"><name>Pont Buiksloterweg</name></wpt>
+  <wpt lat="52.3842" lon="4.9025"><name>A'DAM Toren</name></wpt>
+  <wpt lat="52.3845" lon="4.9007"><name>Eye Filmmuseum</name></wpt>
+  <wpt lat="52.3825" lon="4.901"><name>Pont terug</name></wpt>
+  <wpt lat="52.3791" lon="4.9003"><name>Centraal Station</name></wpt>
+  <wpt lat="52.3785" lon="4.8955"><name>Prins Hendrikkade</name></wpt>
+  <wpt lat="52.3806" lon="4.89"><name>Brouwersgracht</name></wpt>
+  <wpt lat="52.3815" lon="4.8885"><name>Haarlemmerstraat</name></wpt>
+  <trk><name>Maandag optie A - Amsterdam-Noord en Brouwersgracht</name><trkseg>
+    <trkpt lat="52.3791" lon="4.9003"/>
+    <trkpt lat="52.3825" lon="4.901"/>
+    <trkpt lat="52.3842" lon="4.9025"/>
+    <trkpt lat="52.3845" lon="4.9007"/>
+    <trkpt lat="52.3825" lon="4.901"/>
+    <trkpt lat="52.3791" lon="4.9003"/>
+    <trkpt lat="52.3785" lon="4.8955"/>
+    <trkpt lat="52.38" lon="4.892"/>
+    <trkpt lat="52.3806" lon="4.89"/>
+    <trkpt lat="52.3812" lon="4.8865"/>
+    <trkpt lat="52.3818" lon="4.883"/>
+    <trkpt lat="52.3825" lon="4.8835"/>
+    <trkpt lat="52.3815" lon="4.8885"/>
+    <trkpt lat="52.38" lon="4.893"/>
+  </trkseg></trk>
+</gpx>

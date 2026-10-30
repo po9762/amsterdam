@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Claude" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="52.3786" lon="4.8862"><name>Noordermarkt</name></wpt>
+  <wpt lat="52.3746" lon="4.884"><name>Westerkerk</name></wpt>
+  <wpt lat="52.3726" lon="4.8853"><name>Reestraat</name></wpt>
+  <wpt lat="52.3723" lon="4.8868"><name>Hartenstraat</name></wpt>
+  <wpt lat="52.3706" lon="4.8849"><name>Wolvenstraat</name></wpt>
+  <wpt lat="52.3703" lon="4.8836"><name>Berenstraat</name></wpt>
+  <wpt lat="52.3691" lon="4.8846"><name>Runstraat</name></wpt>
+  <wpt lat="52.3692" lon="4.8862"><name>Huidenstraat</name></wpt>
+  <wpt lat="52.3687" lon="4.8898"><name>Spui</name></wpt>
+  <wpt lat="52.3692" lon="4.89"><name>Begijnhof (ingang Spui, open tot 17:00)</name></wpt>
+  <trk><name>Zaterdag - Jordaan en Negen Straatjes (Noordermarkt &gt; Spui/Begijnhof)</name><trkseg>
+    <trkpt lat="52.3786" lon="4.8862"/>
+    <trkpt lat="52.377" lon="4.885"/>
+    <trkpt lat="52.3757" lon="4.8843"/>
+    <trkpt lat="52.3746" lon="4.884"/>
+    <trkpt lat="52.3727" lon="4.8843"/>
+    <trkpt lat="52.3726" lon="4.8853"/>
+    <trkpt lat="52.3723" lon="4.8868"/>
+    <trkpt lat="52.3708" lon="4.8863"/>
+    <trkpt lat="52.3706" lon="4.8849"/>
+    <trkpt lat="52.3703" lon="4.8836"/>
+    <trkpt lat="52.369" lon="4.8833"/>
+    <trkpt lat="52.3691" lon="4.8846"/>
+    <trkpt lat="52.3692" lon="4.8862"/>
+    <trkpt lat="52.3692" lon="4.8877"/>
+    <trkpt lat="52.369" lon="4.8887"/>
+    <trkpt lat="52.3687" lon="4.8898"/>
+    <trkpt lat="52.3692" lon="4.89"/>
+  </trkseg></trk>
+</gpx>

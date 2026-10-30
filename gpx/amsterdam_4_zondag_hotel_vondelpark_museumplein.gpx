@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Claude" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="52.3445" lon="4.85"><name>Olympic Hotel</name></wpt>
+  <wpt lat="52.3447" lon="4.856"><name>Stadionplein</name></wpt>
+  <wpt lat="52.3505" lon="4.858"><name>Amstelveenseweg</name></wpt>
+  <wpt lat="52.356" lon="4.8612"><name>Vondelpark (ingang westkant)</name></wpt>
+  <wpt lat="52.358" lon="4.8702"><name>Koffiestop midden in het park</name></wpt>
+  <wpt lat="52.3592" lon="4.8795"><name>Van Baerlestraat</name></wpt>
+  <wpt lat="52.358" lon="4.8798"><name>Stedelijk Museum</name></wpt>
+  <wpt lat="52.3573" lon="4.8818"><name>Museumplein</name></wpt>
+  <trk><name>Zondag - Olympic Hotel &gt; Vondelpark &gt; Museumplein</name><trkseg>
+    <trkpt lat="52.3445" lon="4.85"/>
+    <trkpt lat="52.3441" lon="4.8525"/>
+    <trkpt lat="52.3447" lon="4.856"/>
+    <trkpt lat="52.3475" lon="4.8572"/>
+    <trkpt lat="52.3505" lon="4.858"/>
+    <trkpt lat="52.3533" lon="4.8587"/>
+    <trkpt lat="52.356" lon="4.8612"/>
+    <trkpt lat="52.357" lon="4.8655"/>
+    <trkpt lat="52.358" lon="4.8702"/>
+    <trkpt lat="52.3584" lon="4.874"/>
+    <trkpt lat="52.359" lon="4.878"/>
+    <trkpt lat="52.3592" lon="4.8795"/>
+    <trkpt lat="52.3583" lon="4.88"/>
+    <trkpt lat="52.358" lon="4.8798"/>
+    <trkpt lat="52.3573" lon="4.8818"/>
+  </trkseg></trk>
+</gpx>

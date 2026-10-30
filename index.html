@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weekend Amsterdam</title>
+<meta name="description" content="Programma, wandelroutes en GPX-bestanden voor ons weekend in Amsterdam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  --bg:#f7f3ec; --surface:#ffffff; --ink:#1e2a2b; --muted:#5d6a6a; --line:#e3dccf;
+  --canal:#1f4e5a; --canal-2:#2f6f7c; --brick:#b5462f; --gold:#c99a3b;
+  --chip:#efe8db; --shadow:0 1px 2px rgba(30,42,43,.06),0 6px 20px rgba(30,42,43,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121819; --surface:#1a2223; --ink:#e9e4da; --muted:#a3adab; --line:#2c3638;
+    --canal:#7fb7c2; --canal-2:#9ccbd4; --brick:#e0795f; --gold:#e0b65c; --chip:#243031;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121819; --surface:#1a2223; --ink:#e9e4da; --muted:#a3adab; --line:#2c3638;
+  --canal:#7fb7c2; --canal-2:#9ccbd4; --brick:#e0795f; --gold:#e0b65c; --chip:#243031;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;margin:0}
+a{color:var(--canal)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+
+/* hero */
+.hero{position:relative;min-height:440px;display:flex;align-items:flex-end;color:#fff;
+  background:#1f4e5a url("https://commons.wikimedia.org/wiki/Special:FilePath/Reguliersgracht,_Amsterdam.jpg?width=1920") center/cover no-repeat}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,25,28,.15) 0%,rgba(10,25,28,.75) 100%)}
+.hero .wrap{position:relative;padding-top:64px;padding-bottom:40px;width:100%}
+.kicker{text-transform:uppercase;letter-spacing:.14em;font-size:13px;font-weight:600;opacity:.9}
+.hero h1{font-size:clamp(40px,8vw,72px);margin:8px 0 10px}
+.hero p{font-size:18px;max-width:560px;margin:0 0 22px;opacity:.95}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--brick);color:#fff}
+.btn-ghost{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.4);backdrop-filter:blur(4px)}
+.btn-small{padding:7px 13px;font-size:14px}
+.btn-outline{background:transparent;color:var(--canal);border-color:var(--line)}
+.btn-outline:hover{border-color:var(--canal)}
+.btn-dl{background:var(--canal);color:var(--bg)}
+.hero-credit{position:absolute;right:12px;bottom:8px;font-size:11px;opacity:.7;color:#fff}
+.hero-credit a{color:#fff}
+
+nav.days{position:sticky;top:0;z-index:1000;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.days .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:10px;padding-bottom:10px}
+nav.days a{white-space:nowrap;text-decoration:none;color:var(--ink);font-weight:500;font-size:14px;padding:6px 12px;border-radius:999px;background:var(--chip)}
+
+section{padding:48px 0 8px}
+.sec-head{margin-bottom:20px}
+.sec-head h2{font-size:clamp(28px,5vw,38px)}
+.sec-head p{color:var(--muted);margin:6px 0 0}
+
+/* facts */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+.fact b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px;font-weight:600}
+.note{background:var(--chip);border-left:4px solid var(--gold);border-radius:10px;padding:12px 14px;margin:14px 0;font-size:15px}
+
+/* map */
+#map{height:460px;border-radius:16px;border:1px solid var(--line);box-shadow:var(--shadow);z-index:1}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.legend button{display:inline-flex;align-items:center;gap:8px;font:500 14px Inter,sans-serif;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.legend button.off{opacity:.45}
+.swatch{width:14px;height:4px;border-radius:2px;display:inline-block}
+
+/* timeline */
+.day-intro{color:var(--muted);margin-top:6px}
+.timeline{list-style:none;margin:24px 0 0;padding:0;border-left:2px solid var(--line);margin-left:8px}
+.timeline>li{position:relative;padding:0 0 26px 24px}
+.timeline>li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--canal)}
+.timeline>li.walk::before{background:var(--brick);border-color:var(--brick)}
+.time{font-weight:600;color:var(--brick);font-size:14px;letter-spacing:.02em}
+.timeline h3{font-size:21px;margin:2px 0 6px}
+.timeline p{margin:6px 0}
+
+/* walk card */
+.walk-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);margin-top:10px}
+.photos{display:grid;grid-template-columns:1fr;gap:2px;background:var(--line)}
+.photos.two{grid-template-columns:1fr 1fr}
+@media (max-width:560px){.photos.two{grid-template-columns:1fr}}
+figure{margin:0;position:relative;background:var(--chip)}
+figure img{display:block;width:100%;height:230px;object-fit:cover}
+figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 10px 6px;font-size:12px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}
+figcaption a{color:#fff}
+.walk-body{padding:16px 18px 18px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.pill{font-size:13px;font-weight:600;background:var(--chip);border-radius:999px;padding:3px 10px;color:var(--ink)}
+.stops{display:flex;flex-wrap:wrap;gap:0;margin:8px 0 14px;padding:0;list-style:none;font-size:15px}
+.stops li{display:flex;align-items:center}
+.stops li:not(:last-child)::after{content:"→";color:var(--muted);margin:0 8px}
+.walk-actions{display:flex;flex-wrap:wrap;gap:8px}
+.tip{font-size:14px;color:var(--muted);margin:10px 0 0}
+
+/* lists */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
+.box h3{font-size:20px;margin-bottom:8px}
+.box ul{margin:0;padding-left:20px}
+.box li{margin:4px 0}
+.check{list-style:none;padding:0 !important}
+.check li{display:flex;gap:10px;align-items:flex-start}
+.check input{margin-top:5px;accent-color:var(--canal);width:16px;height:16px}
+.dl-list{list-style:none;padding:0;margin:0}
+.dl-list li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.dl-list li:last-child{border-bottom:0}
+
+footer{margin-top:56px;padding:28px 0 40px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+footer ul{padding-left:18px;margin:8px 0}
+.leaflet-popup-content{font:14px Inter,sans-serif}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">4 koppels · 3 dagen · te voet door de stad</div>
+    <h1>Weekend Amsterdam</h1>
+    <p>Grachten, de Jordaan, Kusama in het Stedelijk, De Pijp en genoeg terrasjes. Hier vind je het programma, de wandelroutes en de GPX-bestanden voor je gsm.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="gpx/amsterdam_alle_wandelingen.gpx" download>⬇ Alle routes (GPX)</a>
+      <a class="btn btn-ghost" href="#kaart">Bekijk de kaart</a>
+    </div>
+  </div>
+  <div class="hero-credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Reguliersgracht,_Amsterdam.jpg" target="_blank" rel="noopener">Reguliersgracht, Wikimedia Commons</a></div>
+</header>
+
+<nav class="days" aria-label="Snel naar">
+  <div class="wrap">
+    <a href="#praktisch">Praktisch</a>
+    <a href="#kaart">Kaart</a>
+    <a href="#zaterdag">Zaterdag</a>
+    <a href="#zondag">Zondag</a>
+    <a href="#maandag">Maandag</a>
+    <a href="#downloads">Downloads</a>
+    <a href="#checklist">Checklist</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="praktisch">
+  <div class="sec-head"><h2>Praktisch</h2><p>Wie, wanneer, waar.</p></div>
+  <div class="facts">
+    <div class="fact"><b>Vertrek</b>Zaterdag 11:00 vanuit Kontich</div>
+    <div class="fact"><b>Hotel</b>Olympic Hotel, IJsbaanpad 12 (2 nachten). Inchecken vanaf 14:00, uitchecken tot 11:00.</div>
+    <div class="fact"><b>Parkeren</b>P+R Olympisch Stadion. Volg de instructies aan de automaat voor het P+R-tarief.</div>
+    <div class="fact"><b>Vast op zondag</b>12:45 Yayoi Kusama in het Stedelijk Museum<br>19:30 diner bij Heemelrijck, Leidseplein</div>
+    <div class="fact"><b>Rondrijden</b>Tram 24 (haltes IJsbaanpad en Olympisch Stadion) en bus 397 (Leidseplein ↔ Olympisch Stadion). Check altijd de GVB-app of 9292.</div>
+    <div class="fact"><b>Wandelen</b>Zaterdag ± 6 km, zondag ± 9 km. Goede schoenen aan!</div>
+  </div>
+  <div class="note">De P+R kan in het weekend vol zijn. Betalen met OVpay via je gewone bankkaart telt mogelijk niet als bewijs voor de P+R-korting: volg de instructies ter plaatse.</div>
+</section>
+
+<section id="kaart">
+  <div class="sec-head"><h2>Alle wandelingen op de kaart</h2><p>Tik op een route of een stop voor meer info. Met de knoppen zet je routes aan of uit.</p></div>
+  <div id="map" role="region" aria-label="Kaart met wandelroutes"></div>
+  <div class="legend" id="legend"></div>
+</section>
+
+<!-- ZATERDAG -->
+<section id="zaterdag">
+  <div class="sec-head"><h2>Zaterdag</h2><p class="day-intro">Jordaan, grachten en een Amsterdamse avond.</p></div>
+  <ol class="timeline">
+    <li><div class="time">11:00</div><h3>Vertrek uit Kontich</h3>
+      <p>Rechtstreeks naar het Olympic Hotel: bagage afzetten, wagen op de P+R, daarna met het openbaar vervoer naar het centrum.</p></li>
+    <li><div class="time">± 14:00</div><h3>Met de tram naar het centrum</h3>
+      <p>Tram 24 vanaf IJsbaanpad (4 minuten van het hotel) of Olympisch Stadion. Check in de GVB-app welke halte het dichtst bij de Jordaan ligt.</p></li>
+    <li><div class="time">14:30 – 15:30</div><h3>Late lunch in de Jordaan</h3>
+      <p>Rond Noordermarkt of Westerstraat.</p></li>
+    <li class="walk"><div class="time">15:30 – 16:45</div><h3>Wandeling 1: Jordaan, Negen Straatjes en Begijnhof</h3>
+      <div data-walk="w1"></div></li>
+    <li><div class="time">16:45 – 17:45</div><h3>Bruine kroeg rond het Spui</h3>
+      <p>Een uurtje in een bruin café of proeflokaal.</p></li>
+    <li class="walk"><div class="time">17:45 – 19:00</div><h3>Wandeling 2: oude binnenstad</h3>
+      <div data-walk="w2"></div></li>
+    <li><div class="time">± 19:00</div><h3>Borrel en avondeten</h3>
+      <p>Aperitief rond Nieuwmarkt of Zeedijk, daarna eten in de oude binnenstad (restaurant nog te kiezen, reserveren voor 8).</p></li>
+    <li class="walk"><div class="time">Na het diner</div><h3>Wandeling 3: verlichte grachten</h3>
+      <div data-walk="w3"></div>
+      <p>Laatste drankje rond Rembrandtplein, dan tram, bus of taxi terug naar het hotel.</p></li>
+  </ol>
+</section>
+
+<!-- ZONDAG -->
+<section id="zondag">
+  <div class="sec-head"><h2>Zondag</h2><p class="day-intro">Vondelpark, Kusama, De Pijp en Leidseplein.</p></div>
+  <ol class="timeline">
+    <li><div class="time">± 09:00</div><h3>Ontbijt in het hotel</h3><p>Rustig aan.</p></li>
+    <li class="walk"><div class="time">10:00 – 11:30</div><h3>Wandeling 4: van het hotel door het Vondelpark</h3>
+      <div data-walk="w4"></div></li>
+    <li><div class="time">12:30</div><h3>Aanmelden bij het Stedelijk Museum</h3>
+      <p>Iedereen ruim op tijd binnen. Tickets digitaal klaar en een verzamelpunt afspreken.</p></li>
+    <li><div class="time">12:45</div><h3>Tentoonstelling Yayoi Kusama</h3>
+      <p>Reken op ongeveer twee uur.</p></li>
+    <li class="walk"><div class="time">± 15:00</div><h3>Wandeling 5: naar De Pijp</h3>
+      <div data-walk="w5"></div>
+      <p>Ruime horecastop rond Gerard Douplein of Eerste van der Helststraat.</p></li>
+    <li class="walk"><div class="time">± 16:30 – 18:00</div><h3>Wandeling 6: Amstel, Magere Brug en Leidseplein</h3>
+      <div data-walk="w6"></div></li>
+    <li><div class="time">± 18:00</div><h3>Aperitief rond Leidseplein</h3></li>
+    <li><div class="time">19:30</div><h3>Diner bij Heemelrijck</h3>
+      <p>Vaste reservatie op het Leidseplein. Terug naar het hotel met bus 397, tram 24 of taxi.</p></li>
+  </ol>
+</section>
+
+<!-- MAANDAG -->
+<section id="maandag">
+  <div class="sec-head"><h2>Maandag</h2><p class="day-intro">Uitchecken (tot 11:00), bagage in de auto of bij het hotel, en kiezen op basis van het weer.</p></div>
+  <ol class="timeline">
+    <li class="walk"><div class="time">Optie A · mooi weer</div><h3>Wandeling 7: met de pont naar Noord en terug</h3>
+      <div data-walk="w7"></div></li>
+    <li><div class="time">Optie B · slecht weer</div><h3>Rondvaart en grachtengordel</h3>
+      <p>Openbaar vervoer naar het centrum, rondvaart van ongeveer een uur, koffie, korte wandeling door de grachtengordel en lunch. Daarna terug naar hotel en auto, en naar huis.</p></li>
+  </ol>
+</section>
+
+<section id="downloads">
+  <div class="sec-head"><h2>GPX-bestanden</h2><p>Open ze in Komoot, OsmAnd, Google My Maps of je sporthorloge. De routes zijn uitgezet langs de stopplaatsen; laat je app ze over de straten tekenen.</p></div>
+  <div class="box"><ul class="dl-list" id="dl-list"></ul></div>
+</section>
+
+<section id="checklist">
+  <div class="sec-head"><h2>Checklist en open punten</h2></div>
+  <div class="cols">
+    <div class="box"><h3>Checklist</h3>
+      <ul class="check">
+        <li><input type="checkbox" id="c1"><label for="c1">Kusama-tickets digitaal en offline beschikbaar</label></li>
+        <li><input type="checkbox" id="c2"><label for="c2">Reservatie Heemelrijck gecontroleerd (8 personen, 19:30)</label></li>
+        <li><input type="checkbox" id="c3"><label for="c3">Restaurant zaterdagavond gereserveerd</label></li>
+        <li><input type="checkbox" id="c4"><label for="c4">P+R-voorwaarden en alternatieve parking</label></li>
+        <li><input type="checkbox" id="c5"><label for="c5">Actuele route tram 24 gecheckt in de GVB-app</label></li>
+        <li><input type="checkbox" id="c6"><label for="c6">GVB of 9292 op minstens twee telefoons</label></li>
+        <li><input type="checkbox" id="c7"><label for="c7">Betaalkaarten of OV-product voorzien</label></li>
+        <li><input type="checkbox" id="c8"><label for="c8">Begijnhof zaterdag vóór 17:00</label></li>
+        <li><input type="checkbox" id="c9"><label for="c9">Comfortabele wandelschoenen en regenjas</label></li>
+      </ul>
+    </div>
+    <div class="box"><h3>Nog te beslissen</h3>
+      <ul>
+        <li>Restaurant voor zaterdagavond</li>
+        <li>Concrete cafés voor de tussenstops</li>
+        <li>Laatste vertrekuur op maandag</li>
+        <li>Maandag: Amsterdam-Noord of rondvaart</li>
+        <li>Taxi als terugvaloptie op zaterdag- en zondagavond</li>
+        <li>Zondag: volledige of kortere wandeling naar Leidseplein</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Foto's:</b> alle beelden komen van Wikimedia Commons en worden daar gehost. Klik op de bronlink voor de maker en licentie.</p>
+    <ul id="credits"></ul>
+    <p>Kaartgegevens © OpenStreetMap-bijdragers. Routes zijn indicatief; check ter plaatse en in de GVB-app.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const WALKS = [{"id": "w1", "title": "Zaterdag - Jordaan en Negen Straatjes (Noordermarkt > Spui/Begijnhof)", "short": "Za · Jordaan & 9 Straatjes", "km": "2", "min": "45", "color": "#b5462f", "file": "amsterdam_1_zaterdag_jordaan_negen_straatjes.gpx", "track": [[52.3786, 4.8862], [52.377, 4.885], [52.3757, 4.8843], [52.3746, 4.884], [52.3727, 4.8843], [52.3726, 4.8853], [52.3723, 4.8868], [52.3708, 4.8863], [52.3706, 4.8849], [52.3703, 4.8836], [52.369, 4.8833], [52.3691, 4.8846], [52.3692, 4.8862], [52.3692, 4.8877], [52.369, 4.8887], [52.3687, 4.8898], [52.3692, 4.89]], "stops": [{"name": "Noordermarkt", "lat": 52.3786, "lon": 4.8862}, {"name": "Westerkerk", "lat": 52.3746, "lon": 4.884}, {"name": "Reestraat", "lat": 52.3726, "lon": 4.8853}, {"name": "Hartenstraat", "lat": 52.3723, "lon": 4.8868}, {"name": "Wolvenstraat", "lat": 52.3706, "lon": 4.8849}, {"name": "Berenstraat", "lat": 52.3703, "lon": 4.8836}, {"name": "Runstraat", "lat": 52.3691, "lon": 4.8846}, {"name": "Huidenstraat", "lat": 52.3692, "lon": 4.8862}, {"name": "Spui", "lat": 52.3687, "lon": 4.8898}, {"name": "Begijnhof (ingang Spui, open tot 17:00)", "lat": 52.3692, "lon": 4.89}], "photos": [{"file": "Westerkerk_Amsterdam.jpg", "alt": "Westerkerk"}, {"file": "Amsterdam_-_Begijnhof_chapel_(3416058906).jpg", "alt": "Begijnhof"}], "tip": "Het Begijnhof is open tot 17:00, dus meteen bij aankomst aan het Spui bezoeken. Het is privédomein: rustig blijven als groep."}, {"id": "w2", "title": "Zaterdag - Oude binnenstad (Spui > Nieuwmarkt)", "short": "Za · Oude binnenstad", "km": "1,6", "min": "30", "color": "#c99a3b", "file": "amsterdam_2_zaterdag_oude_binnenstad.gpx", "track": [[52.3687, 4.8898], [52.3685, 4.8912], [52.37, 4.8914], [52.3716, 4.892], [52.3731, 4.8926], [52.374, 4.8917], [52.3735, 4.894], [52.3741, 4.8955], [52.3753, 4.8966], [52.3765, 4.8983], [52.3762, 4.9003], [52.3745, 4.9008], [52.3726, 4.9002]], "stops": [{"name": "Spui", "lat": 52.3687, "lon": 4.8898}, {"name": "Kalverstraat", "lat": 52.37, "lon": 4.8914}, {"name": "Dam", "lat": 52.3731, "lon": 4.8926}, {"name": "Nieuwe Kerk", "lat": 52.374, "lon": 4.8917}, {"name": "Bijenkorf", "lat": 52.3735, "lon": 4.894}, {"name": "Warmoesstraat", "lat": 52.3753, "lon": 4.8966}, {"name": "Zeedijk", "lat": 52.3762, "lon": 4.9003}, {"name": "Nieuwmarkt (De Waag)", "lat": 52.3726, "lon": 4.9002}], "photos": [{"file": "Amsterdam_-_Dam_Square_-_1265.jpg", "alt": "Dam"}, {"file": "Amsterdam_(NL),_Waag_--_2015_--_7258.jpg", "alt": "De Waag op de Nieuwmarkt"}], "tip": null}, {"id": "w3", "title": "Zaterdagavond - Nieuwmarkt > Rembrandtplein", "short": "Za · Avondwandeling", "km": "1,5", "min": "25", "color": "#6b4c9a", "file": "amsterdam_3_zaterdag_avondwandeling.gpx", "track": [[52.3726, 4.9002], [52.371, 4.8994], [52.3693, 4.8982], [52.3682, 4.8978], [52.3683, 4.899], [52.3684, 4.9003], [52.3672, 4.9013], [52.3667, 4.9008], [52.366, 4.9002], [52.3655, 4.8985], [52.3656, 4.8968], [52.3663, 4.8963]], "stops": [{"name": "Nieuwmarkt", "lat": 52.3726, "lon": 4.9002}, {"name": "Kloveniersburgwal", "lat": 52.371, "lon": 4.8994}, {"name": "Staalstraat", "lat": 52.3682, "lon": 4.8978}, {"name": "Brug over Groenburgwal", "lat": 52.3683, "lon": 4.899}, {"name": "Blauwbrug", "lat": 52.3667, "lon": 4.9008}, {"name": "Herengracht", "lat": 52.3655, "lon": 4.8985}, {"name": "Thorbeckeplein", "lat": 52.3656, "lon": 4.8968}, {"name": "Rembrandtplein", "lat": 52.3663, "lon": 4.8963}], "photos": [{"file": "Blauwbrug.jpg", "alt": "Blauwbrug over de Amstel"}], "tip": "Reguliersgracht en Magere Brug laten we bewust voor zondag."}, {"id": "w4", "title": "Zondag - Olympic Hotel > Vondelpark > Museumplein", "short": "Zo · Vondelpark", "km": "3,5–4", "min": "55", "color": "#2e7d4f", "file": "amsterdam_4_zondag_hotel_vondelpark_museumplein.gpx", "track": [[52.3445, 4.85], [52.3441, 4.8525], [52.3447, 4.856], [52.3475, 4.8572], [52.3505, 4.858], [52.3533, 4.8587], [52.356, 4.8612], [52.357, 4.8655], [52.358, 4.8702], [52.3584, 4.874], [52.359, 4.878], [52.3592, 4.8795], [52.3583, 4.88], [52.358, 4.8798], [52.3573, 4.8818]], "stops": [{"name": "Olympic Hotel", "lat": 52.3445, "lon": 4.85}, {"name": "Stadionplein", "lat": 52.3447, "lon": 4.856}, {"name": "Amstelveenseweg", "lat": 52.3505, "lon": 4.858}, {"name": "Vondelpark (ingang westkant)", "lat": 52.356, "lon": 4.8612}, {"name": "Koffiestop midden in het park", "lat": 52.358, "lon": 4.8702}, {"name": "Van Baerlestraat", "lat": 52.3592, "lon": 4.8795}, {"name": "Stedelijk Museum", "lat": 52.358, "lon": 4.8798}, {"name": "Museumplein", "lat": 52.3573, "lon": 4.8818}], "photos": [{"file": "Amsterdam_-_Vondelpark_-_1496.jpg", "alt": "Vondelpark"}, {"file": "De_nieuwe_vleugel_van_het_Stedelijk_Museum_Amsterdam.jpg", "alt": "Stedelijk Museum"}], "tip": "Via Stadionplein en Amstelveenseweg: zo kom je aan de westkant in het park. Koffiestop halverwege het park (25 à 30 minuten)."}, {"id": "w5", "title": "Zondag - Museumplein > Ruysdaelkade > Gerard Douplein", "short": "Zo · Naar De Pijp", "km": "1,3", "min": "20", "color": "#d97a1f", "file": "amsterdam_5_zondag_museumplein_de_pijp.gpx", "track": [[52.358, 4.8798], [52.357, 4.884], [52.3565, 4.887], [52.3558, 4.889], [52.3557, 4.8905], [52.3552, 4.8915]], "stops": [{"name": "Stedelijk Museum", "lat": 52.358, "lon": 4.8798}, {"name": "Ruysdaelkade", "lat": 52.3558, "lon": 4.889}, {"name": "Albert Cuypstraat", "lat": 52.3557, "lon": 4.8905}, {"name": "Gerard Douplein", "lat": 52.3552, "lon": 4.8915}], "photos": [{"file": "20130420_Amsterdam_37_Albert_Cuypstraat.JPG", "alt": "Albert Cuypstraat"}], "tip": "De Albert Cuypmarkt is op zondag gesloten; de cafés errond zijn wel open."}, {"id": "w6", "title": "Zondag - De Pijp > Amstel > Leidseplein", "short": "Zo · Amstel & Leidseplein", "km": "4", "min": "60", "color": "#1f4e5a", "file": "amsterdam_6_zondag_de_pijp_amstel_leidseplein.gpx", "track": [[52.3552, 4.8915], [52.3545, 4.8935], [52.3535, 4.896], [52.3537, 4.8985], [52.3542, 4.9005], [52.355, 4.9045], [52.3556, 4.9065], [52.3582, 4.9047], [52.361, 4.9032], [52.3633, 4.902], [52.3635, 4.9003], [52.3638, 4.8962], [52.363, 4.8955], [52.362, 4.892], [52.3613, 4.889], [52.3605, 4.8885], [52.3613, 4.889], [52.3626, 4.8858], [52.3634, 4.8845], [52.3647, 4.8833], [52.3643, 4.8821], [52.3642, 4.883]], "stops": [{"name": "Gerard Douplein", "lat": 52.3552, "lon": 4.8915}, {"name": "Sarphatipark", "lat": 52.3535, "lon": 4.896}, {"name": "Ceintuurbaan", "lat": 52.3542, "lon": 4.9005}, {"name": "Amstel", "lat": 52.3556, "lon": 4.9065}, {"name": "Magere Brug", "lat": 52.3633, "lon": 4.902}, {"name": "Reguliersgracht", "lat": 52.3638, "lon": 4.8962}, {"name": "Prinsengracht", "lat": 52.362, "lon": 4.892}, {"name": "Spiegelgracht", "lat": 52.3605, "lon": 4.8885}, {"name": "Leidsegracht", "lat": 52.3647, "lon": 4.8833}, {"name": "Leidseplein", "lat": 52.3642, "lon": 4.883}], "photos": [{"file": "Amsterdam_-_Magere_Brug_-_0823.jpg", "alt": "Magere Brug"}, {"file": "Leidseplein_Amsterdam1.jpg", "alt": "Leidseplein"}], "tip": "Moe? Sla Sarphatipark en Ceintuurbaan over en ga via Albert Cuypstraat en Van Woustraat rechtstreeks naar de Amstel (scheelt ± 1 km)."}, {"id": "w7", "title": "Maandag optie A - Amsterdam-Noord en Brouwersgracht", "short": "Ma · Noord & Brouwersgracht", "km": "2,6", "min": "45", "color": "#3a7bd5", "file": "amsterdam_7_maandag_optie_a_noord_brouwersgracht.gpx", "track": [[52.3791, 4.9003], [52.3825, 4.901], [52.3842, 4.9025], [52.3845, 4.9007], [52.3825, 4.901], [52.3791, 4.9003], [52.3785, 4.8955], [52.38, 4.892], [52.3806, 4.89], [52.3812, 4.8865], [52.3818, 4.883], [52.3825, 4.8835], [52.3815, 4.8885], [52.38, 4.893]], "stops": [{"name": "Centraal Station (pont naar Buiksloterweg)", "lat": 52.3791, "lon": 4.9003}, {"name": "Pont Buiksloterweg", "lat": 52.3825, "lon": 4.901}, {"name": "A'DAM Toren", "lat": 52.3842, "lon": 4.9025}, {"name": "Eye Filmmuseum", "lat": 52.3845, "lon": 4.9007}, {"name": "Pont terug", "lat": 52.3825, "lon": 4.901}, {"name": "Centraal Station", "lat": 52.3791, "lon": 4.9003}, {"name": "Prins Hendrikkade", "lat": 52.3785, "lon": 4.8955}, {"name": "Brouwersgracht", "lat": 52.3806, "lon": 4.89}, {"name": "Haarlemmerstraat", "lat": 52.3815, "lon": 4.8885}], "photos": [{"file": "EYE_Filmmuseum.jpg", "alt": "Eye Filmmuseum aan het IJ"}], "tip": "De pont naar Buiksloterweg is gratis en vaart heel frequent."}];
+
+const FP = n => "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(n).replace(/%2C/g, ",") + "?width=1200";
+const PAGE = n => "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(n).replace(/%2C/g, ",");
+
+// Walk cards
+const credits = new Map();
+credits.set("Reguliersgracht,_Amsterdam.jpg", "Reguliersgracht (header)");
+WALKS.forEach(w => {
+  const slot = document.querySelector('[data-walk="' + w.id + '"]');
+  if (!slot) return;
+  const photos = (w.photos || []).map(p => {
+    credits.set(p.file, p.alt);
+    return '<figure><img loading="lazy" src="' + FP(p.file) + '" alt="' + p.alt + '" onerror="this.parentNode.remove()">' +
+      '<figcaption>' + p.alt + ' · <a href="' + PAGE(p.file) + '" target="_blank" rel="noopener">bron</a></figcaption></figure>';
+  }).join("");
+  const stops = w.stops.map(s => "<li>" + s.name + "</li>").join("");
+  slot.innerHTML =
+    '<div class="walk-card">' +
+      (photos ? '<div class="photos ' + (w.photos.length > 1 ? "two" : "") + '">' + photos + "</div>" : "") +
+      '<div class="walk-body">' +
+        '<div class="meta"><span class="pill">± ' + w.km + ' km</span><span class="pill">± ' + w.min + ' min stappen</span></div>' +
+        '<ul class="stops">' + stops + "</ul>" +
+        (w.tip ? '<p class="tip">' + w.tip + "</p>" : "") +
+        '<div class="walk-actions" style="margin-top:12px">' +
+          '<a class="btn btn-small btn-dl" href="gpx/' + w.file + '" download>⬇ GPX</a>' +
+          '<button class="btn btn-small btn-outline" data-show="' + w.id + '">Toon op kaart</button>' +
+        "</div>" +
+      "</div>" +
+    "</div>";
+});
+
+// Downloads list
+const dl = document.getElementById("dl-list");
+dl.innerHTML = WALKS.map(w =>
+  '<li><span>' + w.title + ' <span class="pill" style="margin-left:6px">± ' + w.km + ' km</span></span>' +
+  '<a class="btn btn-small btn-dl" href="gpx/' + w.file + '" download>⬇ GPX</a></li>').join("") +
+  '<li><span><b>Alle wandelingen in één bestand</b></span><a class="btn btn-small btn-dl" href="gpx/amsterdam_alle_wandelingen.gpx" download>⬇ GPX</a></li>';
+
+// Credits
+document.getElementById("credits").innerHTML = [...credits].map(([file, alt]) =>
+  '<li>' + alt + ': <a href="' + PAGE(file) + '" target="_blank" rel="noopener">' + file.replace(/_/g, " ") + "</a></li>").join("");
+
+// Checklist memory (per viewer, optional)
+document.querySelectorAll(".check input").forEach(cb => {
+  try { cb.checked = localStorage.getItem("ams-" + cb.id) === "1"; } catch (e) {}
+  cb.addEventListener("change", () => { try { localStorage.setItem("ams-" + cb.id, cb.checked ? "1" : "0"); } catch (e) {} });
+});
+
+// Map
+if (!window.L) {
+  document.getElementById("map").innerHTML = '<p style="padding:20px">De kaart kon niet laden. De GPX-bestanden werken wel.</p>';
+} else {
+const map = L.map("map", { scrollWheelZoom: false });
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+const layers = {}, all = [];
+WALKS.forEach(w => {
+  const g = L.layerGroup();
+  const line = L.polyline(w.track, { color: w.color, weight: 5, opacity: .85 }).bindPopup("<b>" + w.title + "</b><br>± " + w.km + " km");
+  line.addTo(g);
+  w.stops.forEach(s => L.circleMarker([s.lat, s.lon], { radius: 5, color: "#fff", weight: 2, fillColor: w.color, fillOpacity: 1 })
+    .bindPopup("<b>" + s.name + "</b><br>" + w.title).addTo(g));
+  g.addTo(map);
+  layers[w.id] = { group: g, line };
+  all.push(...w.track);
+});
+
+map.fitBounds(L.latLngBounds(all).pad(0.05));
+L.circleMarker([52.3445, 4.8500], { radius: 10, color: "#fff", weight: 3, fillColor: "#1e2a2b", fillOpacity: 1 })
+  .bindTooltip("Hotel", { permanent: true, direction: "right" })
+  .bindPopup("<b>Olympic Hotel</b><br>IJsbaanpad 12").addTo(map);
+
+const legend = document.getElementById("legend");
+WALKS.forEach(w => {
+  const b = document.createElement("button");
+  b.innerHTML = '<span class="swatch" style="background:' + w.color + '"></span>' + w.short;
+  b.onclick = () => {
+    const l = layers[w.id].group;
+    if (map.hasLayer(l)) { map.removeLayer(l); b.classList.add("off"); }
+    else { l.addTo(map); b.classList.remove("off"); }
+  };
+  legend.appendChild(b);
+});
+document.addEventListener("click", e => {
+  const id = e.target.getAttribute && e.target.getAttribute("data-show");
+  if (!id) return;
+  const l = layers[id];
+  if (!map.hasLayer(l.group)) l.group.addTo(map);
+  document.getElementById("kaart").scrollIntoView({ behavior: "smooth" });
+  setTimeout(() => { map.fitBounds(l.line.getBounds().pad(0.15)); l.line.openPopup(); }, 400);
+});
+}
+</script>
+</body>
+</html>

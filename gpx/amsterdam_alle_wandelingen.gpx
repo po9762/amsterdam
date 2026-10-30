@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Claude" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="52.3786" lon="4.8862"><name>Noordermarkt</name></wpt>
+  <wpt lat="52.3746" lon="4.884"><name>Westerkerk</name></wpt>
+  <wpt lat="52.3726" lon="4.8853"><name>Reestraat</name></wpt>
+  <wpt lat="52.3723" lon="4.8868"><name>Hartenstraat</name></wpt>
+  <wpt lat="52.3706" lon="4.8849"><name>Wolvenstraat</name></wpt>
+  <wpt lat="52.3703" lon="4.8836"><name>Berenstraat</name></wpt>
+  <wpt lat="52.3691" lon="4.8846"><name>Runstraat</name></wpt>
+  <wpt lat="52.3692" lon="4.8862"><name>Huidenstraat</name></wpt>
+  <wpt lat="52.3687" lon="4.8898"><name>Spui</name></wpt>
+  <wpt lat="52.3692" lon="4.89"><name>Begijnhof (ingang Spui, open tot 17:00)</name></wpt>
+  <wpt lat="52.3687" lon="4.8898"><name>Spui</name></wpt>
+  <wpt lat="52.37" lon="4.8914"><name>Kalverstraat</name></wpt>
+  <wpt lat="52.3731" lon="4.8926"><name>Dam</name></wpt>
+  <wpt lat="52.374" lon="4.8917"><name>Nieuwe Kerk</name></wpt>
+  <wpt lat="52.3735" lon="4.894"><name>Bijenkorf</name></wpt>
+  <wpt lat="52.3753" lon="4.8966"><name>Warmoesstraat</name></wpt>
+  <wpt lat="52.3762" lon="4.9003"><name>Zeedijk</name></wpt>
+  <wpt lat="52.3726" lon="4.9002"><name>Nieuwmarkt (De Waag)</name></wpt>
+  <wpt lat="52.3726" lon="4.9002"><name>Nieuwmarkt</name></wpt>
+  <wpt lat="52.371" lon="4.8994"><name>Kloveniersburgwal</name></wpt>
+  <wpt lat="52.3682" lon="4.8978"><name>Staalstraat</name></wpt>
+  <wpt lat="52.3683" lon="4.899"><name>Brug over Groenburgwal</name></wpt>
+  <wpt lat="52.3667" lon="4.9008"><name>Blauwbrug</name></wpt>
+  <wpt lat="52.3655" lon="4.8985"><name>Herengracht</name></wpt>
+  <wpt lat="52.3656" lon="4.8968"><name>Thorbeckeplein</name></wpt>
+  <wpt lat="52.3663" lon="4.8963"><name>Rembrandtplein</name></wpt>
+  <wpt lat="52.3445" lon="4.85"><name>Olympic Hotel</name></wpt>
+  <wpt lat="52.3447" lon="4.856"><name>Stadionplein</name></wpt>
+  <wpt lat="52.3505" lon="4.858"><name>Amstelveenseweg</name></wpt>
+  <wpt lat="52.356" lon="4.8612"><name>Vondelpark (ingang westkant)</name></wpt>
+  <wpt lat="52.358" lon="4.8702"><name>Koffiestop midden in het park</name></wpt>
+  <wpt lat="52.3592" lon="4.8795"><name>Van Baerlestraat</name></wpt>
+  <wpt lat="52.358" lon="4.8798"><name>Stedelijk Museum</name></wpt>
+  <wpt lat="52.3573" lon="4.8818"><name>Museumplein</name></wpt>
+  <wpt lat="52.358" lon="4.8798"><name>Stedelijk Museum</name></wpt>
+  <wpt lat="52.3558" lon="4.889"><name>Ruysdaelkade</name></wpt>
+  <wpt lat="52.3557" lon="4.8905"><name>Albert Cuypstraat</name></wpt>
+  <wpt lat="52.3552" lon="4.8915"><name>Gerard Douplein</name></wpt>
+  <wpt lat="52.3552" lon="4.8915"><name>Gerard Douplein</name></wpt>
+  <wpt lat="52.3535" lon="4.896"><name>Sarphatipark</name></wpt>
+  <wpt lat="52.3542" lon="4.9005"><name>Ceintuurbaan</name></wpt>
+  <wpt lat="52.3556" lon="4.9065"><name>Amstel</name></wpt>
+  <wpt lat="52.3633" lon="4.902"><name>Magere Brug</name></wpt>
+  <wpt lat="52.3638" lon="4.8962"><name>Reguliersgracht</name></wpt>
+  <wpt lat="52.362" lon="4.892"><name>Prinsengracht</name></wpt>
+  <wpt lat="52.3605" lon="4.8885"><name>Spiegelgracht</name></wpt>
+  <wpt lat="52.3647" lon="4.8833"><name>Leidsegracht</name></wpt>
+  <wpt lat="52.3642" lon="4.883"><name>Leidseplein</name></wpt>
+  <wpt lat="52.3791" lon="4.9003"><name>Centraal Station (pont naar Buiksloterweg)</name></wpt>
+  <wpt lat="52.3825" lon="4.901"><name>Pont Buiksloterweg</name></wpt>
+  <wpt lat="52.3842" lon="4.9025"><name>A'DAM Toren</name></wpt>
+  <wpt lat="52.3845" lon="4.9007"><name>Eye Filmmuseum</name></wpt>
+  <wpt lat="52.3825" lon="4.901"><name>Pont terug</name></wpt>
+  <wpt lat="52.3791" lon="4.9003"><name>Centraal Station</name></wpt>
+  <wpt lat="52.3785" lon="4.8955"><name>Prins Hendrikkade</name></wpt>
+  <wpt lat="52.3806" lon="4.89"><name>Brouwersgracht</name></wpt>
+  <wpt lat="52.3815" lon="4.8885"><name>Haarlemmerstraat</name></wpt>
+  <trk><name>Zaterdag - Jordaan en Negen Straatjes (Noordermarkt &gt; Spui/Begijnhof)</name><trkseg>
+    <trkpt lat="52.3786" lon="4.8862"/>
+    <trkpt lat="52.377" lon="4.885"/>
+    <trkpt lat="52.3757" lon="4.8843"/>
+    <trkpt lat="52.3746" lon="4.884"/>
+    <trkpt lat="52.3727" lon="4.8843"/>
+    <trkpt lat="52.3726" lon="4.8853"/>
+    <trkpt lat="52.3723" lon="4.8868"/>
+    <trkpt lat="52.3708" lon="4.8863"/>
+    <trkpt lat="52.3706" lon="4.8849"/>
+    <trkpt lat="52.3703" lon="4.8836"/>
+    <trkpt lat="52.369" lon="4.8833"/>
+    <trkpt lat="52.3691" lon="4.8846"/>
+    <trkpt lat="52.3692" lon="4.8862"/>
+    <trkpt lat="52.3692" lon="4.8877"/>
+    <trkpt lat="52.369" lon="4.8887"/>
+    <trkpt lat="52.3687" lon="4.8898"/>
+    <trkpt lat="52.3692" lon="4.89"/>
+  </trkseg></trk>
+  <trk><name>Zaterdag - Oude binnenstad (Spui &gt; Nieuwmarkt)</name><trkseg>
+    <trkpt lat="52.3687" lon="4.8898"/>
+    <trkpt lat="52.3685" lon="4.8912"/>
+    <trkpt lat="52.37" lon="4.8914"/>
+    <trkpt lat="52.3716" lon="4.892"/>
+    <trkpt lat="52.3731" lon="4.8926"/>
+    <trkpt lat="52.374" lon="4.8917"/>
+    <trkpt lat="52.3735" lon="4.894"/>
+    <trkpt lat="52.3741" lon="4.8955"/>
+    <trkpt lat="52.3753" lon="4.8966"/>
+    <trkpt lat="52.3765" lon="4.8983"/>
+    <trkpt lat="52.3762" lon="4.9003"/>
+    <trkpt lat="52.3745" lon="4.9008"/>
+    <trkpt lat="52.3726" lon="4.9002"/>
+  </trkseg></trk>
+  <trk><name>Zaterdagavond - Nieuwmarkt &gt; Rembrandtplein</name><trkseg>
+    <trkpt lat="52.3726" lon="4.9002"/>
+    <trkpt lat="52.371" lon="4.8994"/>
+    <trkpt lat="52.3693" lon="4.8982"/>
+    <trkpt lat="52.3682" lon="4.8978"/>
+    <trkpt lat="52.3683" lon="4.899"/>
+    <trkpt lat="52.3684" lon="4.9003"/>
+    <trkpt lat="52.3672" lon="4.9013"/>
+    <trkpt lat="52.3667" lon="4.9008"/>
+    <trkpt lat="52.366" lon="4.9002"/>
+    <trkpt lat="52.3655" lon="4.8985"/>
+    <trkpt lat="52.3656" lon="4.8968"/>
+    <trkpt lat="52.3663" lon="4.8963"/>
+  </trkseg></trk>
+  <trk><name>Zondag - Olympic Hotel &gt; Vondelpark &gt; Museumplein</name><trkseg>
+    <trkpt lat="52.3445" lon="4.85"/>
+    <trkpt lat="52.3441" lon="4.8525"/>
+    <trkpt lat="52.3447" lon="4.856"/>
+    <trkpt lat="52.3475" lon="4.8572"/>
+    <trkpt lat="52.3505" lon="4.858"/>
+    <trkpt lat="52.3533" lon="4.8587"/>
+    <trkpt lat="52.356" lon="4.8612"/>
+    <trkpt lat="52.357" lon="4.8655"/>
+    <trkpt lat="52.358" lon="4.8702"/>
+    <trkpt lat="52.3584" lon="4.874"/>
+    <trkpt lat="52.359" lon="4.878"/>
+    <trkpt lat="52.3592" lon="4.8795"/>
+    <trkpt lat="52.3583" lon="4.88"/>
+    <trkpt lat="52.358" lon="4.8798"/>
+    <trkpt lat="52.3573" lon="4.8818"/>
+  </trkseg></trk>
+  <trk><name>Zondag - Museumplein &gt; Ruysdaelkade &gt; Gerard Douplein</name><trkseg>
+    <trkpt lat="52.358" lon="4.8798"/>
+    <trkpt lat="52.357" lon="4.884"/>
+    <trkpt lat="52.3565" lon="4.887"/>
+    <trkpt lat="52.3558" lon="4.889"/>
+    <trkpt lat="52.3557" lon="4.8905"/>
+    <trkpt lat="52.3552" lon="4.8915"/>
+  </trkseg></trk>
+  <trk><name>Zondag - De Pijp &gt; Amstel &gt; Leidseplein</name><trkseg>
+    <trkpt lat="52.3552" lon="4.8915"/>
+    <trkpt lat="52.3545" lon="4.8935"/>
+    <trkpt lat="52.3535" lon="4.896"/>
+    <trkpt lat="52.3537" lon="4.8985"/>
+    <trkpt lat="52.3542" lon="4.9005"/>
+    <trkpt lat="52.355" lon="4.9045"/>
+    <trkpt lat="52.3556" lon="4.9065"/>
+    <trkpt lat="52.3582" lon="4.9047"/>
+    <trkpt lat="52.361" lon="4.9032"/>
+    <trkpt lat="52.3633" lon="4.902"/>
+    <trkpt lat="52.3635" lon="4.9003"/>
+    <trkpt lat="52.3638" lon="4.8962"/>
+    <trkpt lat="52.363" lon="4.8955"/>
+    <trkpt lat="52.362" lon="4.892"/>
+    <trkpt lat="52.3613" lon="4.889"/>
+    <trkpt lat="52.3605" lon="4.8885"/>
+    <trkpt lat="52.3613" lon="4.889"/>
+    <trkpt lat="52.3626" lon="4.8858"/>
+    <trkpt lat="52.3634" lon="4.8845"/>
+    <trkpt lat="52.3647" lon="4.8833"/>
+    <trkpt lat="52.3643" lon="4.8821"/>
+    <trkpt lat="52.3642" lon="4.883"/>
+  </trkseg></trk>
+  <trk><name>Maandag optie A - Amsterdam-Noord en Brouwersgracht</name><trkseg>
+    <trkpt lat="52.3791" lon="4.9003"/>
+    <trkpt lat="52.3825" lon="4.901"/>
+    <trkpt lat="52.3842" lon="4.9025"/>
+    <trkpt lat="52.3845" lon="4.9007"/>
+    <trkpt lat="52.3825" lon="4.901"/>
+    <trkpt lat="52.3791" lon="4.9003"/>
+    <trkpt lat="52.3785" lon="4.8955"/>
+    <trkpt lat="52.38" lon="4.892"/>
+    <trkpt lat="52.3806" lon="4.89"/>
+    <trkpt lat="52.3812" lon="4.8865"/>
+    <trkpt lat="52.3818" lon="4.883"/>
+    <trkpt lat="52.3825" lon="4.8835"/>
+    <trkpt lat="52.3815" lon="4.8885"/>
+    <trkpt lat="52.38" lon="4.893"/>
+  </trkseg></trk>
+</gpx>

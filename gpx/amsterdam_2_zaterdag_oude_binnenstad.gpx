@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="Claude" xmlns="http://www.topografix.com/GPX/1/1">
+  <wpt lat="52.3687" lon="4.8898"><name>Spui</name></wpt>
+  <wpt lat="52.37" lon="4.8914"><name>Kalverstraat</name></wpt>
+  <wpt lat="52.3731" lon="4.8926"><name>Dam</name></wpt>
+  <wpt lat="52.374" lon="4.8917"><name>Nieuwe Kerk</name></wpt>
+  <wpt lat="52.3735" lon="4.894"><name>Bijenkorf</name></wpt>
+  <wpt lat="52.3753" lon="4.8966"><name>Warmoesstraat</name></wpt>
+  <wpt lat="52.3762" lon="4.9003"><name>Zeedijk</name></wpt>
+  <wpt lat="52.3726" lon="4.9002"><name>Nieuwmarkt (De Waag)</name></wpt>
+  <trk><name>Zaterdag - Oude binnenstad (Spui &gt; Nieuwmarkt)</name><trkseg>
+    <trkpt lat="52.3687" lon="4.8898"/>
+    <trkpt lat="52.3685" lon="4.8912"/>
+    <trkpt lat="52.37" lon="4.8914"/>
+    <trkpt lat="52.3716" lon="4.892"/>
+    <trkpt lat="52.3731" lon="4.8926"/>
+    <trkpt lat="52.374" lon="4.8917"/>
+    <trkpt lat="52.3735" lon="4.894"/>
+    <trkpt lat="52.3741" lon="4.8955"/>
+    <trkpt lat="52.3753" lon="4.8966"/>
+    <trkpt lat="52.3765" lon="4.8983"/>
+    <trkpt lat="52.3762" lon="4.9003"/>
+    <trkpt lat="52.3745" lon="4.9008"/>
+    <trkpt lat="52.3726" lon="4.9002"/>
+  </trkseg></trk>
+</gpx>
